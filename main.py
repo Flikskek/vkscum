@@ -14,8 +14,8 @@ def get_price():
   print(url)
   j = requests.get(url)
   data = json.loads(j.text)  
-  price = data['result']['Ask']
-  return price
+  price = str(data['result']['Ask'])
+  return 'Курс биткоина в долларах: ' + price + "💰"
 
 def send_message(user_id, message, keyboard=None):
     post = {
@@ -36,11 +36,11 @@ for event in VkLongPoll(session).listen():
         text = event.text.lower()
         user_id = event.user_id
 
-        if text == 'привет':
+        if text == 'начать':
             keyboard = VkKeyboard()
             keyboard.add_button('BitCoin💳',VkKeyboardColor.POSITIVE)
 
-            send_message(user_id,'Hello, friend',keyboard)
+            send_message(user_id,'Привет, пока что я могу показывать тебе курс биткоина, но это пока....',keyboard)
         elif text == 'bitcoin💳':
             keyboard = VkKeyboard()
             keyboard.add_button('BitCoin💳',VkKeyboardColor.POSITIVE)
