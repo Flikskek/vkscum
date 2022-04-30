@@ -1,12 +1,12 @@
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
-from store import tok
+from store import tok #python файл с переменной в которой содержится токен
 
 import requests
 import json
 
-session = vk_api.VkApi(token=tok)
+session = vk_api.VkApi(token=tok) #ваш токен (tok)
 
 
 def get_price_usd():
